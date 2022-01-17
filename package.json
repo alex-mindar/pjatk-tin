@@ -4,6 +4,7 @@
   "description": "### Student: Oleksii Myndar ### Student number: s21068 ### Group: 17c",
   "main": "index.js",
   "dependencies": {
+    "cors": "^2.8.5",
     "url": "^0.11.0"
   },
   "devDependencies": {
