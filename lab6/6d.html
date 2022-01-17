@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appending row</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <table id='students'>
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Student number</th>
+            <th>Grade</th>
+        </tr>
+        <tr>
+            <td>Oleksii</td>
+            <td>Myndar</td>
+            <td>s21068</td>
+            <td>4.5</td>
+        </tr>
+        <tr>
+            <td>Tomasz</td>
+            <td>Pieciukiewicz</td>
+            <td>s12345</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>Tomasz</td>
+            <td>Werner</td>
+            <td>s67890</td>
+            <td>5</td>
+        </tr>
+    </table>
+    <form name="newRowInfo">
+        <p>Add new row to the table:</p>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name"><br>
+        <label for="name">Surname</label>
+        <input type="text" id="surname" name="surname"><br>
+        <label for="name">Student number</label>
+        <input type="text" id="snumber" name="snumber"><br>
+        <label for="name">Grade</label>
+        <input type="number" id="grade" name="grade"><br>
+
+        <button type="button" onclick="addNewRow()">Convert</button>
+    </form>
+    <script>
+        function addNewRow() {
+            const formFields = {
+                name: document.forms.newRowInfo.name,
+                surname: document.forms.newRowInfo.surname,
+                studentNumber: document.forms.newRowInfo.snumber,
+                grade: document.forms.newRowInfo.grade
+            }
+            const validated = validate(formFields)
+            if (validated) {
+                const studentsTable = document.getElementById('students')
+                const newRow = studentsTable.insertRow(-1)
+                newRow.insertCell(0).appendChild(document.createTextNode(formFields.grade.value))
+                newRow.insertCell(0).appendChild(document.createTextNode(formFields.studentNumber.value))
+                newRow.insertCell(0).appendChild(document.createTextNode(formFields.surname.value))
+                newRow.insertCell(0).appendChild(document.createTextNode(formFields.name.value))
+            }
+        }
+
+        function validate(formFields) {
+            formFields.name.style.backgroundColor = 'white'
+            formFields.surname.style.backgroundColor = 'white'
+            formFields.studentNumber.style.backgroundColor = 'white'
+            formFields.grade.style.backgroundColor = 'white'
+
+            let validated = true
+
+            if (!formFields.name.value || /\d/.test(formFields.name.value)) {
+                validated = false
+                formFields.name.style.backgroundColor = 'pink'
+            }
+            if (!formFields.surname.value || /\d/.test(formFields.surname.value)) {
+                validated = false
+                formFields.surname.style.backgroundColor = 'pink'
+            }
+            if (!formFields.studentNumber.value || formFields.studentNumber.value[0] !== 's') {
+                validated = false
+                formFields.studentNumber.style.backgroundColor = 'pink'
+            }
+            if (!formFields.grade.value || formFields.grade.value < 0 || formFields.grade.value > 5) {
+                validated = false
+                formFields.grade.style.backgroundColor = 'pink'
+            }
+
+            return validated
+        }
+    </script>
+</body>
+</html>

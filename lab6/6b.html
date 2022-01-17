@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paragraph with timeout</title>
+</head>
+<body>
+    <script>
+        const paragraph = document.createElement('p')
+        paragraph.innerText = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem eaque aperiam laudantium quo veritatis id laborum enim dignissimos, assumenda quas esse magni quae recusandae accusantium quaerat omnis? Similique, eaque eligendi!'
+        setTimeout(() => document.body.appendChild(paragraph), 5000)
+    </script>
+</body>
+</html>
