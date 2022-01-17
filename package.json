@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "### Student: Oleksii Myndar ### Student number: s21068 ### Group: 17c",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "url": "^0.11.0"
+  },
   "devDependencies": {
     "eslint": "^8.7.0",
     "eslint-plugin-react": "^7.28.0"
